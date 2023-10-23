@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">PizzaDam</string>
+    <string name="usuario" />
+    <string name="contrasena" />
+    <string name="logo" />
+    <string name="reset">Vaciar campos\n</string>
+    <string name="btnReset" />
+    <string name="enterBtn" />
+    <string name="btnRegistro">No tengo cuenta</string>
+    <string name="acceder">Entrar</string>
+    <string name="borrar">Borrar</string>
+</resources>
