@@ -11,10 +11,6 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
 
     private static Servicio servicio = new Servicio();
-
-    public static Servicio getServicio(){
-        return servicio;
-    }
     private EditText usuario, contrasena;
 
     @Override
@@ -26,11 +22,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void realizarAcceso(View v){
+
         String textoUsuario = usuario.getText().toString();
         String textoContrasena = contrasena.getText().toString();
+
         if (servicio.comprobarAcceso(textoUsuario, textoContrasena)){
-            Intent i = new Intent(MainActivity.this,MenuActivity.class);
-            startActivity(i);
+            startActivity(new Intent(MainActivity.this,MenuActivity.class));
         }
         else{
             Toast.makeText(this, "Usuario y contraseña no válidos.",Toast.LENGTH_LONG).show();

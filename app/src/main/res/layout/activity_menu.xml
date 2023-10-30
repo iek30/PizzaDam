@@ -7,21 +7,80 @@
     android:background="@drawable/fondo_pizza_dam"
     tools:context=".MenuActivity">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
+    <TableLayout
+        android:layout_width="388dp"
+        android:layout_height="614dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/materialToolbar"
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <ImageButton
+                android:id="@+id/imageButton2"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:layout_margin="20dp"
+                android:background="@drawable/custom_border"
+                android:backgroundTint="#000000"
+                android:contentDescription="@string/todo"
+                android:onClick="comenzarPedido"
+                android:scaleType="fitCenter"
+                android:src="@drawable/fondo_boton_pedido" />
+        </TableRow>
+
+        <TableRow
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="?attr/colorPrimary"
-            android:minHeight="?attr/actionBarSize"
-            android:theme="?attr/actionBarTheme" />
-    </LinearLayout>
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <ImageButton
+                android:id="@+id/imageButton"
+                android:layout_width="300dp"
+                android:layout_height="126dp"
+                android:layout_margin="20dp"
+                android:background="@drawable/custom_border"
+                android:backgroundTint="#FE3131"
+                android:contentDescription="@string/todo"
+                android:onClick="abrirWeb"
+                android:scaleType="fitCenter"
+                android:src="@drawable/baner_web" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <ImageButton
+                android:id="@+id/imageButton3"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/custom_border"
+                android:backgroundTint="#000000"
+                android:contentDescription="@string/todo"
+                android:scaleType="fitCenter"
+                android:src="@drawable/icono_ajustes" />
+
+            <ImageButton
+                android:id="@+id/imageButton4"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="40dp"
+                android:layout_weight="1"
+                android:background="@drawable/custom_border"
+                android:backgroundTint="#000000"
+                android:contentDescription="@string/todo"
+                android:onClick="volver"
+                android:scaleType="fitCenter"
+                android:src="@drawable/cerrar_icono" />
+        </TableRow>
+    </TableLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
