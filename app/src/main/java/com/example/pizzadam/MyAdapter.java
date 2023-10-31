@@ -12,9 +12,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
     Context context;
-    Pizza[] listData;
+    MyListData[] listData;
 
-    public MyAdapter(Context context, Pizza[] listData) {
+    public MyAdapter(Context context, MyListData[] listData) {
         this.context = context;
         this.listData = listData;
     }
@@ -28,8 +28,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
 
     @Override
     public void onBindViewHolder(@NonNull MyAdapter.ViewHolder holder, int position) {
-        holder.tvName.setText(listData[position].getNombre());
-        holder.imgView.setImageResource(listData[position].getIdImagen());
+        holder.tvName.setText(listData[position].getName());
+        holder.imgView.setImageResource(listData[position].getImgId());
     }
 
     @Override
