@@ -5,12 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/fondo_pizza_dam"
-    tools:context=".MainActivity" >
+    android:backgroundTint="#000000"
+    tools:context=".MainActivity">
 
     <androidx.cardview.widget.CardView
         android:layout_width="321dp"
         android:layout_height="475dp"
-        app:cardBackgroundColor="#E1000000"
+        app:cardBackgroundColor="#00000000"
         app:cardCornerRadius="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

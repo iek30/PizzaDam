@@ -14,13 +14,10 @@ public class PedidoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_pedido);
 
         MyListData[] listData = new MyListData[]{
-                new MyListData("Pizza Carbonara", R.drawable.cerrar_icono),
-                new MyListData("Pizza Chicharruners", R.drawable.cerrar_icono),
-                new MyListData("Pizza Mexicana", R.drawable.cerrar_icono),
-                new MyListData("Pizza Ranchera", R.drawable.cerrar_icono),
-                new MyListData("Pizza Ranchera", R.drawable.cerrar_icono),
-                new MyListData("Pizza Ranchera", R.drawable.cerrar_icono),
-                new MyListData("Pizza Ranchera", R.drawable.cerrar_icono)
+                new MyListData("Pizza Carbonara", R.drawable.carbonara, 12.7, null),
+                new MyListData("Pizza Chicharruners", R.drawable.chicharruners, 12.7, null),
+                new MyListData("Pizza Mexicana", R.drawable.mexicana, 12.7, null),
+                new MyListData("Pizza Ranchera", R.drawable.ranchera, 12.7, null)
         };
 
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
