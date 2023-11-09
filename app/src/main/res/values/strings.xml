@@ -11,4 +11,6 @@
     <string name="borrar">Borrar</string>
     <string name="todo">TODO</string>
     <string name="agregar"></string>
+    <string name="nombre">nombre</string>
+    <string name="precio">precio</string>
 </resources>

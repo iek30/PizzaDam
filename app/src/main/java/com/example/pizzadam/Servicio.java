@@ -1,16 +1,11 @@
 package com.example.pizzadam;
 
-import android.app.Activity;
-import android.content.Intent;
-
-import androidx.core.content.ContextCompat;
-
 import java.util.ArrayList;
 
 public class Servicio {
 
     private ArrayList<Cliente> clientes;
-    private ArrayList<MyListData> pizzas;
+    private Pizza[] pizzas;
 
     public Servicio(){
         this.clientes = DAOUsuarios.getInstance().listadoClientes();
@@ -21,8 +16,8 @@ public class Servicio {
         return new ArrayList<>(this.clientes);
     }
 
-    public ArrayList<MyListData> copiaListadoPizzas(){
-        return new ArrayList<>(this.pizzas);
+    public Pizza[] copiaListadoPizzas(){
+        return this.pizzas.clone();
     }
 
     public boolean comprobarAcceso(String usuario, String contrasena){

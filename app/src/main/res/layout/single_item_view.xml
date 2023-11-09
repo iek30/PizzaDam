@@ -5,7 +5,9 @@
     android:layout_height="wrap_content"
     android:layout_margin="20dp"
     android:background="@drawable/custom_border"
+    android:backgroundTint="#9C27B0"
     android:gravity="center_vertical"
+    android:onClick="onClick"
     android:orientation="horizontal">
 
     <ImageView
@@ -32,11 +34,12 @@
         android:layout_width="109dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:background="#00FFFFFF"
+        android:background="#00000000"
+        android:onClick="onClick"
         android:text="@string/agregar"
         app:icon="@drawable/add_icon_foreground"
         app:iconGravity="textEnd"
-        app:iconSize="50dp"
-        app:iconTint="#9C27B0" />
+        app:iconSize="60dp"
+        app:iconTint="#000000" />
 
 </LinearLayout>

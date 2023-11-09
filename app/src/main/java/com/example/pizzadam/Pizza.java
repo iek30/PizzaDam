@@ -1,18 +1,19 @@
 package com.example.pizzadam;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class MyListData {
+public class Pizza implements Serializable {
     private String name;
     private int imgId;
     private double precio;
     private ArrayList<String> ingredientes;
 
-    public MyListData(String name, int imgId, double precio, ArrayList<String> ingredientes) {
+    public Pizza(String name, int imgId, double precio, ArrayList<String> ingredientes) {
         this.name = name;
         this.imgId = imgId;
         this.precio = precio;
-        this.ingredientes = ingredientes;
+        this.ingredientes = new ArrayList<>();
     }
 
     public String getName() {

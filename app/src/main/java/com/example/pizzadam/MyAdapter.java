@@ -11,11 +11,12 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
+public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     Context context;
-    MyListData[] listData;
+    Pizza[] listData;
 
-    public MyAdapter(Context context, MyListData[] listData) {
+
+    public MyAdapter(Context context, Pizza[] listData) {
         this.context = context;
         this.listData = listData;
     }
@@ -31,6 +32,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
     public void onBindViewHolder(@NonNull MyAdapter.ViewHolder holder, int position) {
         holder.tvName.setText(listData[position].getName());
         holder.imgView.setImageResource(listData[position].getImgId());
+        holder.setPizza(listData[position]);
     }
 
     @Override
@@ -38,16 +40,21 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
         return listData.length;
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+
+
+    public class ViewHolder extends RecyclerView.ViewHolder{
         TextView tvName;
         ImageView imgView;
-
         Button btn;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             tvName = itemView.findViewById(R.id.tvItem);
             imgView = itemView.findViewById(R.id.ivItem);
             btn = itemView.findViewById(R.id.btn);
+        }
+        public void setPizza(Pizza pizza){
+            itemView.setTag(pizza);
         }
     }
 }
