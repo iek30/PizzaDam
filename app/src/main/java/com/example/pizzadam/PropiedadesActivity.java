@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -18,6 +19,7 @@ public class PropiedadesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_propiedades);
+
         Intent i = getIntent();
 
         if (i.hasExtra("pizza")){
@@ -37,5 +39,12 @@ public class PropiedadesActivity extends AppCompatActivity {
             lista.setAdapter(arrayAdapter);
         }
 
+    }
+
+    public void agregar(View v){
+        Servicio.getInstance().getPedido().add(pizza);
+        //Intent i = new Intent(PropiedadesActivity.this,PedidoActivity.class);
+        //startActivity(i);
+        finish();
     }
 }

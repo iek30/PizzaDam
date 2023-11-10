@@ -8,12 +8,13 @@ public class Pizza implements Serializable {
     private int imgId;
     private double precio;
     private ArrayList<String> ingredientes;
+    private TipoTamano tamano;
 
     public Pizza(String name, int imgId, double precio, ArrayList<String> ingredientes) {
         this.name = name;
         this.imgId = imgId;
         this.precio = precio;
-        this.ingredientes = new ArrayList<>();
+        this.ingredientes = ingredientes;
     }
 
     public String getName() {
@@ -46,5 +47,14 @@ public class Pizza implements Serializable {
 
     public void setIngredientes(ArrayList<String> ingredientes) {
         this.ingredientes = ingredientes;
+    }
+
+    @Override
+    public String toString() {
+        String cadena ="\n" + name + "  " + precio + "€" + "\n Ingredientes: \n";
+        for(String ingrediente: ingredientes){
+            cadena+=" -" + ingrediente + "\n";
+        }
+        return cadena;
     }
 }

@@ -45,13 +45,11 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     public class ViewHolder extends RecyclerView.ViewHolder{
         TextView tvName;
         ImageView imgView;
-        Button btn;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             tvName = itemView.findViewById(R.id.tvItem);
             imgView = itemView.findViewById(R.id.ivItem);
-            btn = itemView.findViewById(R.id.btn);
         }
         public void setPizza(Pizza pizza){
             itemView.setTag(pizza);

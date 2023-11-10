@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/fondo_pizza_dam"
-    tools:context=".PropiedadesActivity">
+    tools:context=".FinalizarActivity">
 
     <androidx.cardview.widget.CardView
         android:layout_width="368dp"
@@ -22,33 +22,20 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-
             <ImageView
-                android:id="@+id/imagen"
+                android:id="@+id/imageView"
                 android:layout_width="match_parent"
-                android:layout_height="245dp"
-                android:layout_marginTop="68dp"
-                tools:srcCompat="@tools:sample/avatars" />
-
-            <TextView
-                android:id="@+id/idNombre"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/nombre"
-                android:textAlignment="center"
-                android:textColor="#FFFFFF"
-                android:textSize="30dp" />
+                android:layout_height="151dp"
+                app:srcCompat="@drawable/logo_sin_fondo_pizza_dam" />
 
             <ListView
-                android:id="@+id/miLista"
+                android:id="@+id/listaFinalizar"
                 android:layout_width="match_parent"
-                android:layout_height="135dp"
-                android:layout_margin="15dp"
-                android:cacheColorHint="#FFFFFF"
-                android:textAlignment="center" />
+                android:layout_height="340dp"
+                android:cacheColorHint="#FFFFFF" />
 
             <Button
-                android:id="@+id/idPrecio"
+                android:id="@+id/btnFinalizar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="15dp"
@@ -60,6 +47,5 @@
                 android:textStyle="bold" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

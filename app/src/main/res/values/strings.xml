@@ -13,4 +13,5 @@
     <string name="agregar"></string>
     <string name="nombre">nombre</string>
     <string name="precio">precio</string>
+    <string name="bienvenida">Bienvenido/a</string>
 </resources>

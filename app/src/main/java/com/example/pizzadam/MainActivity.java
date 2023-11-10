@@ -10,7 +10,6 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static Servicio servicio = new Servicio();
     private EditText usuario, contrasena;
 
     @Override
@@ -26,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         String textoUsuario = usuario.getText().toString();
         String textoContrasena = contrasena.getText().toString();
 
-        if (servicio.comprobarAcceso(textoUsuario, textoContrasena)){
+        if (Servicio.getInstance().comprobarAcceso(textoUsuario, textoContrasena)){
             startActivity(new Intent(MainActivity.this,MenuActivity.class));
         }
         else{

@@ -16,7 +16,7 @@ public class MenuActivity extends AppCompatActivity {
     }
 
     public void volver(View v){
-        startActivity(new Intent(MenuActivity.this,MainActivity.class));
+        finish();
     }
 
     public void abrirWeb(View v){

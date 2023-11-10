@@ -13,6 +13,12 @@
         android:theme="@style/Theme.PizzaDam"
         tools:targetApi="31">
         <activity
+            android:name=".PersonalizadaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".FinalizarActivity"
+            android:exported="false" />
+        <activity
             android:name=".PropiedadesActivity"
             android:exported="false" />
         <activity

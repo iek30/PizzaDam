@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/fondo_pizza_dam"
-    tools:context=".PropiedadesActivity">
+    tools:context=".PersonalizadaActivity">
 
     <androidx.cardview.widget.CardView
         android:layout_width="368dp"
@@ -39,14 +39,6 @@
                 android:textColor="#FFFFFF"
                 android:textSize="30dp" />
 
-            <ListView
-                android:id="@+id/miLista"
-                android:layout_width="match_parent"
-                android:layout_height="135dp"
-                android:layout_margin="15dp"
-                android:cacheColorHint="#FFFFFF"
-                android:textAlignment="center" />
-
             <Button
                 android:id="@+id/idPrecio"
                 android:layout_width="match_parent"
@@ -60,6 +52,5 @@
                 android:textStyle="bold" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
