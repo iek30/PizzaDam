@@ -60,7 +60,9 @@ public class PedidoActivity extends AppCompatActivity {
 
     public void pedirUltimoPedido(View v){
         SharedPreferences p = getSharedPreferences("archivoGuardado",Context.MODE_PRIVATE);
-        Toast.makeText(this, p.getString("ultimaPizza",""), Toast.LENGTH_SHORT).show();
+        Servicio.getInstance().crearUltima();
+        Servicio.getInstance().getUltima().add(p.getString("ultimaPizza",""));
+        startActivity(new Intent(PedidoActivity.this,FinalizarActivity.class));
     }
 
     public void showConfirmationDialog(View v) {

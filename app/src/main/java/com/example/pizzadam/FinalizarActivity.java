@@ -28,12 +28,21 @@ public class FinalizarActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_finalizar);
 
-        arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, Servicio.getInstance().getPedido());
-        lista = findViewById(R.id.listaFinalizar);
-        lista.setAdapter(arrayAdapter);
+        if (Servicio.getInstance().getPedido().isEmpty()){
+            arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, Servicio.getInstance().getUltima());
+            lista = findViewById(R.id.listaFinalizar);
+            lista.setAdapter(arrayAdapter);
+            btn = findViewById(R.id.btnFinalizar);
+            btn.setText("Pagar " + Servicio.getInstance().obtenerPrecio(Servicio.getInstance().getUltima().get(0))+"€");
+        }
+        else{
+            arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, Servicio.getInstance().getPedido());
+            lista = findViewById(R.id.listaFinalizar);
+            lista.setAdapter(arrayAdapter);
+            btn = findViewById(R.id.btnFinalizar);
+            btn.setText("Pagar " + Servicio.getInstance().calcularTotal()+"€");
+        }
 
-        btn = findViewById(R.id.btnFinalizar);
-        btn.setText("Pagar " + Servicio.getInstance().calcularTotal()+"€");
 
         lista.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override

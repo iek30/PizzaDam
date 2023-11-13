@@ -94,16 +94,17 @@ public class PersonalizadaActivity extends AppCompatActivity {
                                 checkBox.setChecked(false);
                             } else {
                                 checkBoxCounter++;
-                                ingredientes.remove(checkBox.getText()+"");
+                                ingredientes.add(checkBox.getText() + "");
                             }
                         } else {
                             checkBoxCounter--;
-                            ingredientes.add(checkBox.getText()+"");
+                            ingredientes.remove(checkBox.getText() + "");
                         }
                     }
                 });
             }
         }
+
 
     }
 
@@ -114,7 +115,7 @@ public class PersonalizadaActivity extends AppCompatActivity {
     public void nuevaPizza(View v){
         pizza.ajustarPrecio();
 
-        ingredientes.add(0,base);
+        ingredientes.add(base);
         pizza.setIngredientes(ingredientes);
 
         Servicio.getInstance().getPedido().add(pizza);

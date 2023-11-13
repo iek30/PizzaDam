@@ -18,7 +18,7 @@ public class DAOUsuarios {
     }
 
     public ArrayList<Cliente> listadoClientes(){
-        clientes.add(new Cliente("",""));
+        clientes.add(new Cliente("user","user"));
         return clientes;
     }
 
