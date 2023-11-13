@@ -3,10 +3,16 @@ package com.example.pizzadam;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -38,9 +44,13 @@ public class FinalizarActivity extends AppCompatActivity {
         });
     }
 
+    public void salir(View v){
+        finish();
+    }
+
     private void showDeleteConfirmationDialog(final int position) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Confirmación");
+        builder.setTitle("¡Atención!");
         builder.setMessage("¿Estás seguro de que deseas eliminar esta pizza?");
 
         builder.setPositiveButton("Sí", new DialogInterface.OnClickListener() {
@@ -51,6 +61,7 @@ public class FinalizarActivity extends AppCompatActivity {
                 // Notificar al adapter que los datos han cambiado
                 arrayAdapter.notifyDataSetChanged();
                 btn.setText("Pagar " + Servicio.getInstance().calcularTotal()+"€");
+                if (Servicio.getInstance().getPedido().size()<1) finish();
             }
         });
 
@@ -66,6 +77,28 @@ public class FinalizarActivity extends AppCompatActivity {
         AlertDialog dialog = builder.create();
         dialog.show();
     }
+
+    public void finalizar(View v){
+
+        Servicio.getInstance().crearPedido();
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("El pedido se ha realizado correctamente.");
+
+        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // Si el usuario hace clic en "Sí", aquí puedes agregar la lógica para continuar
+                Servicio.getInstance().crearPedido();
+                finish();
+            }
+        });
+
+        // Crea y muestra el diálogo
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
 
 
 }

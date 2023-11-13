@@ -14,4 +14,18 @@
     <string name="nombre">nombre</string>
     <string name="precio">precio</string>
     <string name="bienvenida">Bienvenido/a</string>
+    <string name="base">Base:</string>
+    <string name="ingrediente">Ingredientes:</string>
+    <string name="tamano">Tamaño:</string>
+    <string name="val1">Pollo</string>
+    <string name="val2">Jalapeño</string>
+    <string name="val3">Champiñones</string>
+    <string name="value4">Carne picada</string>
+    <string name="val5">Bacon</string>
+    <string name="val6">Pimiento verde</string>
+    <string name="val7">Anchoa</string>
+    <string name="val8">Cebolla</string>
+    <string name="guardar">Guardar última pizza</string>
+    <string name="tema">Cambiar tema de fondo de inicio</string>
+    <string name="guardarAjustes">Guardar y salir</string>
 </resources>

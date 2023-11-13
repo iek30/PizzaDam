@@ -8,7 +8,7 @@ public class Pizza implements Serializable {
     private int imgId;
     private double precio;
     private ArrayList<String> ingredientes;
-    private TipoTamano tamano;
+    private String tamano;
 
     public Pizza(String name, int imgId, double precio, ArrayList<String> ingredientes) {
         this.name = name;
@@ -49,9 +49,23 @@ public class Pizza implements Serializable {
         this.ingredientes = ingredientes;
     }
 
+    public String getTamano() {
+        return tamano;
+    }
+
+    public void setTamano(String tamano) {
+        this.tamano = tamano;
+    }
+
+    public void ajustarPrecio(){
+        if (tamano.equals("PEQUEÑA")) this.precio = 7.25;
+        else if (tamano.equals("MEDIANA")) this.precio = 10.75;
+        else this.precio = 18.55;
+    }
+
     @Override
     public String toString() {
-        String cadena ="\n" + name + "  " + precio + "€" + "\n Ingredientes: \n";
+        String cadena ="\n" + name + "  " + precio + "€" + " TAMAÑO " + tamano + "\n Ingredientes: \n";
         for(String ingrediente: ingredientes){
             cadena+=" -" + ingrediente + "\n";
         }

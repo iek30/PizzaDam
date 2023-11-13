@@ -1,7 +1,9 @@
 package com.example.pizzadam;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -56,7 +58,10 @@ public class PedidoActivity extends AppCompatActivity {
         dialog.show();
     }
 
-
+    public void pedirUltimoPedido(View v){
+        SharedPreferences p = getSharedPreferences("archivoGuardado",Context.MODE_PRIVATE);
+        Toast.makeText(this, p.getString("ultimaPizza",""), Toast.LENGTH_SHORT).show();
+    }
 
     public void showConfirmationDialog(View v) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -95,8 +100,11 @@ public class PedidoActivity extends AppCompatActivity {
     }
 
     public void pagar(View v){
-        double t= Servicio.getInstance().calcularTotal();
-        startActivity(new Intent(PedidoActivity.this,FinalizarActivity.class));
+        if (Servicio.getInstance().getPedido().size() < 1) Toast.makeText(this, "El carrito está vacío.", Toast.LENGTH_LONG).show();
+        else{
+            double t= Servicio.getInstance().calcularTotal();
+            startActivity(new Intent(PedidoActivity.this,FinalizarActivity.class));
+        }
     }
 
     public void onClick(View v){

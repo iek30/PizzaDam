@@ -39,6 +39,7 @@
             android:layout_margin="7dp"
             android:background="@drawable/custom_border"
             android:backgroundTint="#C69C27B0"
+            android:onClick="ajustes"
             android:scaleType="fitCenter"
             app:layout_column="1"
             app:srcCompat="@drawable/fondo_boton_ajustes" />

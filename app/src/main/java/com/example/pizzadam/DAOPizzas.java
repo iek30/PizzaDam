@@ -50,7 +50,7 @@ public class DAOPizzas {
                 new Pizza("Pizza Chicharruners", R.drawable.chicharruners, 10, ingredientes2),
                         new Pizza("Pizza Mexicana", R.drawable.mexicana, 10, ingredientes3),
                         new Pizza("Pizza Ranchera", R.drawable.ranchera, 10, ingredientes4),
-                        new Pizza("Pizza al gusto", R.drawable.ranchera, 10, new ArrayList<>())
+                        new Pizza("Pizza al gusto", R.drawable.gusto, 10, new ArrayList<>())
         };
 
         return listData;

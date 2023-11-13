@@ -21,37 +21,36 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="#DC2C2A2A"
             android:orientation="vertical">
 
             <ImageView
                 android:id="@+id/imageView"
                 android:layout_width="match_parent"
                 android:layout_height="151dp"
-                app:srcCompat="@drawable/logo_sin_fondo_pizza_dam" />
+                app:srcCompat="@drawable/fondo_boton_ajustes" />
 
-            <ListView
-                android:id="@+id/listaFinalizar"
+            <Switch
+                android:id="@+id/switch2"
                 android:layout_width="match_parent"
-                android:layout_height="340dp"
-                android:cacheColorHint="#FFFFFF" />
+                android:layout_height="83dp"
+                android:layout_margin="30dp"
+                android:shadowColor="#FFFFFF"
+                android:text="@string/tema"
+                android:textColor="#FFFFFF" />
 
             <Button
-                android:id="@+id/btnFinalizar"
+                android:id="@+id/button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="15dp"
+                android:layout_margin="30dp"
                 android:backgroundTint="#9C27B0"
-                android:onClick="finalizar"
-                android:text="@string/precio"
-                android:textColor="#FFFFFF"
-                android:textSize="24sp"
-                android:textStyle="bold" />
+                android:onClick="guardarCambios"
+                android:text="@string/guardarAjustes" />
         </LinearLayout>
-
     </androidx.cardview.widget.CardView>
-
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton3"
+        android:id="@+id/floatingActionButton4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"
@@ -63,5 +62,4 @@
         app:layout_constraintTop_toTopOf="@+id/cardView3"
         app:maxImageSize="90dp"
         app:srcCompat="@drawable/reset_icon_foreground" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
