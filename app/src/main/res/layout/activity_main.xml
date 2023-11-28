@@ -96,11 +96,12 @@
             </LinearLayout>
 
             <Button
-                android:id="@+id/button6"
+                android:id="@+id/btnCuenta"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:backgroundTint="#279C27B0"
+                android:onClick="cambiarACrearCuenta"
                 android:text="@string/btnRegistro"
                 android:textColor="#FFFFFF" />
 

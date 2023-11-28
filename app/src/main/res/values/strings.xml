@@ -28,4 +28,6 @@
     <string name="guardar">Guardar última pizza</string>
     <string name="tema">Cambiar tema de fondo de inicio</string>
     <string name="guardarAjustes">Guardar y salir</string>
+    <string name="reg">Registrar</string>
+    <string name="at">Atrás</string>
 </resources>

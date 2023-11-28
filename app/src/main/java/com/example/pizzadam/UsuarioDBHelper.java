@@ -23,6 +23,23 @@ public class UsuarioDBHelper {
 					+ KEY_NOMBRE + " TEXT,"
 					+ KEY_CONTRASENA + " TEXT"
 					+ ")";
+
+
+	private static final String TABLA_PIZZAS = "pizzas";
+	private static final String KEY_ID_PIZZA = "id";
+	private static final String KEY_NOMBRE_PIZZA = "nombre";
+	private static final String KEY_PRECIO = "precio";
+	private static final String KEY_INGREDIENTES = "ingredientes";
+	private static final String KEY_TAMANO = "tamano";
+
+	private static final String CREAR_TABLA_PIZZA =
+			"CREATE TABLE " + TABLA_PIZZAS + "("
+					+ KEY_ID_PIZZA + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+					+ KEY_NOMBRE_PIZZA + " TEXT,"
+					+ KEY_PRECIO + " INTEGER,"
+					+ KEY_INGREDIENTES + " TEXT,"
+					+ KEY_TAMANO + " TEXT"
+					+ ")";
 	
 
 	private final Context context;
@@ -43,6 +60,7 @@ public class UsuarioDBHelper {
 		public void onCreate(SQLiteDatabase db) {
 			try {
 				db.execSQL(CREAR_TABLA_USUARIOS);
+				db.execSQL(CREAR_TABLA_PIZZA);
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -51,6 +69,7 @@ public class UsuarioDBHelper {
 		@Override
 		public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 			db.execSQL("DROP TABLE IF EXISTS " + TABLA_USUARIOS);
+			db.execSQL("DROP TABLE IF EXISTS " + TABLA_PIZZAS);
 			onCreate(db);
 		}
 	}
@@ -73,20 +92,6 @@ public class UsuarioDBHelper {
 
 	public boolean borrarUsuario(long id) {
 		return db.delete(TABLA_USUARIOS, KEY_ID + "=" + id, null) > 0;
-	}
-
-	public Cursor obtenerTodosLosUsuarios() {
-		return db.query(TABLA_USUARIOS, new String[]{KEY_ID, KEY_NOMBRE, KEY_CONTRASENA},
-				null, null, null, null, null);
-	}
-
-	public Cursor obtenerUsuarioPorId(long id) throws SQLException {
-		Cursor mCursor = db.query(true, TABLA_USUARIOS, new String[]{KEY_ID, KEY_NOMBRE, KEY_CONTRASENA},
-				KEY_ID + "=" + id, null, null, null, null, null);
-		if (mCursor != null) {
-			mCursor.moveToFirst();
-		}
-		return mCursor;
 	}
 
 	public Cursor obtenerUsuarioPorCredenciales(String nombreUsuario, String contrasena) throws SQLException {

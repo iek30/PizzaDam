@@ -1,30 +1,21 @@
 package com.example.pizzadam;
 
-import androidx.annotation.ColorInt;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.content.ContextCompat;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.ColorStateList;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.graphics.Color;
-import android.graphics.PorterDuff;
-import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -39,14 +30,6 @@ public class MainActivity extends AppCompatActivity {
         contrasena = findViewById(R.id.contrasena);
         setTema();
         usuarioDBHelper = new UsuarioDBHelper(this);
-        try {
-            usuarioDBHelper.abrir();
-            usuarioDBHelper.agregarUsuario("iek", "123");
-            usuarioDBHelper.cerrar();
-        } catch (SQLException e) {
-            e.printStackTrace();
-            Toast.makeText(MainActivity.this, "Error al agregar usuario de ejemplo", Toast.LENGTH_SHORT).show();
-        }
     }
 
     private class AutenticarUsuarioTask extends AsyncTask<Void, Void, Boolean> {
@@ -99,6 +82,21 @@ public class MainActivity extends AppCompatActivity {
     public void borrarTodo(View v){
         usuario.setText("");
         contrasena.setText("");
+    }
+
+    public void cambiarACrearCuenta(View v){
+        try {
+            TextView usuarioT = findViewById(R.id.usuario);
+            TextView contrasenaT = findViewById(R.id.contrasena);
+            String usuario = usuarioT.getText().toString().trim();
+            String contrasena = contrasenaT.getText().toString().trim();
+            usuarioDBHelper.abrir();
+            usuarioDBHelper.agregarUsuario(usuario, contrasena);
+            usuarioDBHelper.cerrar();
+            Toast.makeText(this, "Usuario creado correctamente", Toast.LENGTH_LONG).show();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
 }

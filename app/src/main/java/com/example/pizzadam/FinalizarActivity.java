@@ -8,8 +8,10 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -17,12 +19,17 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 
-public class FinalizarActivity extends AppCompatActivity {
+public class FinalizarActivity extends AppCompatActivity implements Runnable{
 
+    final int duracion = 5000; // 5 segundos en milisegundos
+    final int intervalo = 50; // Intervalo para actualizar la barra de progreso
+    final int paso = (int) (((float) intervalo / duracion) * 100);
     ArrayAdapter arrayAdapter;
     ListView lista;
     Button btn;
+    ProgressBar progressBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -106,8 +113,51 @@ public class FinalizarActivity extends AppCompatActivity {
         // Crea y muestra el diálogo
         AlertDialog dialog = builder.create();
         dialog.show();
+        new Thread(this).start();
+
+    }
+
+    private void mostrarVentanaEmergente() {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                // Tu lógica para mostrar el diálogo y actualizar la barra de progreso
+                final Dialog dialog = new Dialog(FinalizarActivity.this);
+                // ... (resto del código)
+
+                // En lugar de usar directamente progressBar.setProgress(progreso);
+                // utiliza runOnUiThread para actualizar la barra de progreso en el hilo principal
+
+                final ProgressBar progressBar = dialog.findViewById(R.id.progressBar);
+                final Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        int progreso = progressBar.getProgress() + paso;
+                        if (progreso <= 100) {
+                            // Actualizar la barra de progreso en el hilo principal
+                            final int finalProgreso = progreso;
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    progressBar.setProgress(finalProgreso);
+                                }
+                            });
+                            handler.postDelayed(this, intervalo);
+                        } else {
+                            dialog.dismiss(); // Cerrar la ventana emergente al completarse el progreso
+                        }
+                    }
+                }, intervalo);
+
+                dialog.show();
+            }
+        });
     }
 
 
-
+    @Override
+    public void run() {
+        mostrarVentanaEmergente();
+    }
 }
