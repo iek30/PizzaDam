@@ -20,7 +20,7 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
 
     private EditText usuario, contrasena;
-    private UsuarioDBHelper usuarioDBHelper;
+    private ConexionBD usuarioDBHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +29,8 @@ public class MainActivity extends AppCompatActivity {
         usuario = findViewById(R.id.usuario);
         contrasena = findViewById(R.id.contrasena);
         setTema();
-        usuarioDBHelper = new UsuarioDBHelper(this);
+        usuarioDBHelper = new ConexionBD(this,"Pizzeria",null,3);
+        usuarioDBHelper.abrir();
     }
 
     private class AutenticarUsuarioTask extends AsyncTask<Void, Void, Boolean> {
@@ -39,13 +40,8 @@ public class MainActivity extends AppCompatActivity {
         String contrasena = contrasenaT.getText().toString().trim();
         @Override
         protected Boolean doInBackground(Void... voids) {
-            usuarioDBHelper.abrir();
-            Cursor cursor = usuarioDBHelper.obtenerUsuarioPorCredenciales(usuario, contrasena);
-            boolean autenticado = cursor != null && cursor.moveToFirst();
-            if (cursor != null) {
-                cursor.close();
-            }
-            usuarioDBHelper.cerrar();
+            boolean autenticado = false;
+            if (usuarioDBHelper.obtenerUsuarioPorCredenciales(usuario, contrasena)) autenticado=true;
             return autenticado;
         }
 
@@ -90,9 +86,7 @@ public class MainActivity extends AppCompatActivity {
             TextView contrasenaT = findViewById(R.id.contrasena);
             String usuario = usuarioT.getText().toString().trim();
             String contrasena = contrasenaT.getText().toString().trim();
-            usuarioDBHelper.abrir();
-            usuarioDBHelper.agregarUsuario(usuario, contrasena);
-            usuarioDBHelper.cerrar();
+            usuarioDBHelper.insertarPersona(usuario, contrasena);
             Toast.makeText(this, "Usuario creado correctamente", Toast.LENGTH_LONG).show();
         } catch (SQLException e) {
             e.printStackTrace();

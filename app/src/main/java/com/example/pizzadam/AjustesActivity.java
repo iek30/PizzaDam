@@ -30,6 +30,7 @@ public class AjustesActivity extends AppCompatActivity {
             tema.setChecked(true);
         }
         else tema.setChecked(false);
+
     }
 
     public void guardarCambios(View v){

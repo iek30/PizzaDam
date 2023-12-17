@@ -5,13 +5,11 @@ import java.util.ArrayList;
 public class Servicio {
 
     private static Servicio servicio;
-    private ArrayList<Cliente> clientes;
     private Pizza[] pizzas;
     private ArrayList<Pizza> pedido = null;
     private ArrayList<String> ultima = null;
 
     private Servicio(){
-        this.clientes = DAOUsuarios.getInstance().listadoClientes();
         this.pizzas = DAOPizzas.getInstance().getPizzas();
         this.pedido = new ArrayList<>();
         this.ultima = new ArrayList<>();
@@ -47,20 +45,9 @@ public class Servicio {
         return servicio;
     }
 
-    public ArrayList<Cliente> copiaListadoClientes(){
-        return new ArrayList<>(clientes);
-    }
 
     public Pizza[] copiaListadoPizzas(){
         return pizzas.clone();
-    }
-
-    public boolean comprobarAcceso(String usuario, String contrasena){
-        boolean accesoPermitido = false;
-        for (int i = 0; i < clientes.size(); i++) {
-            if (usuario.equals(clientes.get(i).getUsuario()) && contrasena.equals(clientes.get(i).getContrasena())) accesoPermitido = true;
-        }
-        return accesoPermitido;
     }
 
     public double obtenerPrecio(String frase) {

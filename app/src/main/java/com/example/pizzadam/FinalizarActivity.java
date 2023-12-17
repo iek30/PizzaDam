@@ -24,13 +24,9 @@ import android.widget.Toast;
 
 public class FinalizarActivity extends AppCompatActivity{
 
-    final int duracion = 5000; // 5 segundos en milisegundos
-    final int intervalo = 50; // Intervalo para actualizar la barra de progreso
-    final int paso = (int) (((float) intervalo / duracion) * 100);
     ArrayAdapter arrayAdapter;
     ListView lista;
     Button btn;
-    ProgressBar progressBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -113,46 +109,11 @@ public class FinalizarActivity extends AppCompatActivity{
 
         // Crea y muestra el diálogo
         AlertDialog dialog = builder.create();
-        TareaAsincrona t = new TareaAsincrona();
-        t.execute();
         dialog.show();
 
     }
 
-    public void mensaje(String m) throws InterruptedException {
-        Thread.sleep(2000);
-        Toast.makeText(this, m, Toast.LENGTH_SHORT).show();
-    }
 
-    String m = "Cocinando...";
-
-    private class TareaAsincrona extends AsyncTask<Void, Void, Void> {
-
-        @Override
-        protected Void doInBackground(Void... voids) {
-            // No se necesita hacer nada aquí, ya que se ejecuta en segundo plano
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Void aVoid) {
-            super.onPostExecute(aVoid);
-            runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    try {
-                        mensaje(m);
-                        m = "Terminando...";
-                        mensaje(m);
-                        m = "Repartiendo...";
-                        mensaje(m);
-                    } catch (InterruptedException e) {
-                        throw new RuntimeException(e);
-                    }
-                }
-            });
-        }
-    }
 
 
 }
